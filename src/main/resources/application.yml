@@ -1,0 +1,4 @@
+server:
+  port: 10000
+logging:
+  path: classpath:log4j.properties
