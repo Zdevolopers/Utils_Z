@@ -1,0 +1,32 @@
+TobatoFDFSUtils的使用步骤：
+
+1.添加 类注释中的依赖
+    <dependency>
+        <groupId>com.github.tobato</groupId>
+        <artifactId>fastdfs-client</artifactId>
+        <version>1.26.1-RELEASE</version>
+    </dependency>
+
+2.添加 配置文件（application.yml）：
+    spring:
+      servlet:
+        multipart:
+          max-file-size: 100GB # 文件最大size
+          max-request-size: 100GB #最大请求size
+    fdfs:
+      so-timeout: 3500 #读取inputsream阻塞时间
+      connect-timeout: 30000 #设置连接超时时间
+      thumb-image: #设置缩略图尺寸
+        width: 150
+        height: 150
+      tracker-list:  #tracker地址
+        - 192.168.3.147:22122
+      web-server-url: http://192.168.3.147/  #通过nginx 访问地址
+      pool: #获取连接池最大数量
+        max-total: 200
+
+3.添加 启动类（Application）上的注解
+    @Import(FdfsClientConfig.class)
+    // 解决jmx重复注册bean的问题
+    @EnableMBeanExport(registration = RegistrationPolicy.IGNORE_EXISTING)
+

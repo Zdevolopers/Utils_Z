@@ -1,13 +1,13 @@
-package com.z.utils;
+package com.z.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "com.z")
-public class UtilsApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(UtilsApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
